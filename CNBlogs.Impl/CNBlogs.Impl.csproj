@@ -6,7 +6,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CNBlogs.Common\CNBlogs.Common.csproj" />
+    <ProjectReference Include="..\CNBlogs.Frame\CNBlogs.Frame.csproj" />
     <ProjectReference Include="..\CNBlogs.Interface\CNBlogs.Interface.csproj" />
+    <ProjectReference Include="..\CNBlogs.Model\CNBlogs.Model.csproj" />
+    <ProjectReference Include="..\CNBlogs.PresentModel\CNBlogs.PresentModel.csproj" />
   </ItemGroup>
 
 </Project>

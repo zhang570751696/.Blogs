@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using CNBlogs.Interface;
+using CNBlogs.PresentModel;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CNBlogs.Controllers
@@ -8,13 +9,13 @@ namespace CNBlogs.Controllers
     /// Test Api
     /// </summary>
     [Route("api/[controller]")]
-    public class ValuesController : Controller
+    public class UserController : Controller
     {
-        private readonly IDateTimeService _dateTimeService;
+        private readonly IUserRepository _userRepository;
 
-        public ValuesController(IDateTimeService dateTimeService)
+        public UserController(IUserRepository userRepository)
         {
-            this._dateTimeService = dateTimeService;
+            this._userRepository = userRepository;
         }
 
         /// <summary>
@@ -23,10 +24,9 @@ namespace CNBlogs.Controllers
         /// <returns></returns>
         // GET api/values
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<UserInfo> Get()
         {
-            var time1 = this._dateTimeService.GetCurrentUtcTime();
-            return new string[] { time1 };
+            return this._userRepository.GetAllUsers();
         }
 
 
@@ -36,9 +36,9 @@ namespace CNBlogs.Controllers
         /// <param name="id">request value</param>
         /// <returns></returns>
         [HttpGet("{id}")]
-        public string Get(int id)
+        public UserInfo Get(int id)
         {
-            return "value";
+            return this._userRepository.GetUserByUserId(id);
         }
 
         /// <summary>
@@ -46,8 +46,13 @@ namespace CNBlogs.Controllers
         /// </summary>
         /// <param name="value"></param>
         [HttpPost]
-        public void Post([FromBody]string value)
+        public bool Post([FromBody]UserInfo value)
         {
+            if (value != null)
+            {
+                return this._userRepository.AddUser(value);
+            }
+            return false;
         }
 
         /// <summary>
@@ -56,8 +61,13 @@ namespace CNBlogs.Controllers
         /// <param name="id">id</param>
         /// <param name="value">value</param>
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
+        public bool Put(int id, [FromBody]UserInfo value)
         {
+            if (value == null)
+            {
+                return false;
+            }
+            return this._userRepository.UpdateUser(id, value);
         }
 
         /// <summary>

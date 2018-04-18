@@ -5,11 +5,17 @@ VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CNBlogs", "CNBlogs\CNBlogs.csproj", "{F15BBC28-7FC3-4498-B31B-8CA85775AE93}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CNBlogs.Interface", "CNBlogs.Interface\CNBlogs.Interface.csproj", "{F3BCC767-1D02-4250-8B75-A1FA9C8B01EC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CNBlogs.Interface", "CNBlogs.Interface\CNBlogs.Interface.csproj", "{F3BCC767-1D02-4250-8B75-A1FA9C8B01EC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CNBlogs.Common", "CNBlogs.Common\CNBlogs.Common.csproj", "{CC63C650-1635-4A8C-B541-4FD20FE380E2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CNBlogs.Common", "CNBlogs.Common\CNBlogs.Common.csproj", "{CC63C650-1635-4A8C-B541-4FD20FE380E2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CNBlogs.Impl", "CNBlogs.Impl\CNBlogs.Impl.csproj", "{423C643C-664A-49E3-A7DE-A500FBE9655F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CNBlogs.Impl", "CNBlogs.Impl\CNBlogs.Impl.csproj", "{423C643C-664A-49E3-A7DE-A500FBE9655F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CNBlogs.Frame", "CNBlogs.Frame\CNBlogs.Frame.csproj", "{608C694B-7026-46F8-AD48-2C020A90E467}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CNBlogs.Model", "CNBlogs.Model\CNBlogs.Model.csproj", "{66ECB309-1ACE-4F34-BB93-2797E04C4487}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CNBlogs.PresentModel", "CNBlogs.PresentModel\CNBlogs.PresentModel.csproj", "{7A2CBDBE-0469-471E-8D6B-44335D27AB6B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +39,18 @@ Global
 		{423C643C-664A-49E3-A7DE-A500FBE9655F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{423C643C-664A-49E3-A7DE-A500FBE9655F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{423C643C-664A-49E3-A7DE-A500FBE9655F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{608C694B-7026-46F8-AD48-2C020A90E467}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{608C694B-7026-46F8-AD48-2C020A90E467}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{608C694B-7026-46F8-AD48-2C020A90E467}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{608C694B-7026-46F8-AD48-2C020A90E467}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66ECB309-1ACE-4F34-BB93-2797E04C4487}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66ECB309-1ACE-4F34-BB93-2797E04C4487}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66ECB309-1ACE-4F34-BB93-2797E04C4487}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66ECB309-1ACE-4F34-BB93-2797E04C4487}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A2CBDBE-0469-471E-8D6B-44335D27AB6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A2CBDBE-0469-471E-8D6B-44335D27AB6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A2CBDBE-0469-471E-8D6B-44335D27AB6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A2CBDBE-0469-471E-8D6B-44335D27AB6B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -10,14 +10,14 @@ namespace CNBlogs.Common
 {
     public class QCachingInterceptor : IInterceptor
     {
-        private ICachingProvider _cacheProvider;
+        private ICachingRepository _cacheProvider;
         private char _linkChar = ':';
 
         /// <summary>
         /// 构造方法
         /// </summary>
         /// <param name="cacheProvider"></param>
-        public QCachingInterceptor(ICachingProvider cacheProvider)
+        public QCachingInterceptor(ICachingRepository cacheProvider)
         {
             _cacheProvider = cacheProvider;
         }

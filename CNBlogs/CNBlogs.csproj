@@ -19,6 +19,7 @@
     <PackageReference Include="Castle.Core" Version="4.2.1" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.5" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="2.2.0" />
+	<DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -27,8 +28,11 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CNBlogs.Common\CNBlogs.Common.csproj" />
+    <ProjectReference Include="..\CNBlogs.Frame\CNBlogs.Frame.csproj" />
     <ProjectReference Include="..\CNBlogs.Impl\CNBlogs.Impl.csproj" />
     <ProjectReference Include="..\CNBlogs.Interface\CNBlogs.Interface.csproj" />
+    <ProjectReference Include="..\CNBlogs.Model\CNBlogs.Model.csproj" />
+    <ProjectReference Include="..\CNBlogs.PresentModel\CNBlogs.PresentModel.csproj" />
   </ItemGroup>
 
 </Project>

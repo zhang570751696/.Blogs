@@ -2,6 +2,7 @@
 using Autofac.Extensions.DependencyInjection;
 using Autofac.Extras.DynamicProxy;
 using CNBlogs.Common;
+using CNBlogs.Frame;
 using CNBlogs.Impl;
 using CNBlogs.Interface;
 using Microsoft.AspNetCore.Builder;
@@ -37,9 +38,6 @@ namespace CNBlogs
         {
             services.AddMvc();
 
-            services.AddScoped<ICachingProvider, MemoryCachingProvider>();
-            services.AddScoped<IDateTimeService, DateTimeService>();
-
             // config swagger 
             services.AddSwaggerGen(c =>
             {
@@ -71,21 +69,33 @@ namespace CNBlogs
         {
             var builder = new ContainerBuilder();
             builder.Populate(services);
+            // 缓存拦截器注入
             builder.RegisterType<QCachingInterceptor>();
+            // 数据库上下文注入
+            builder.RegisterType<BlogContext>().UsingConstructor(typeof(string)).WithParameter("connectionString", Configuration.GetConnectionString("DefaultConnection"));
+            // 仓储注入
+            builder.RegisterGeneric(typeof(Repository<>)).As(typeof(IRepository<>)).InstancePerLifetimeScope();
+
             var filesNames = Directory.GetFiles(Directory.GetCurrentDirectory(), "*.dll", SearchOption.AllDirectories);
-            var assemblyNames = filesNames.Select(AssemblyLoadContext.GetAssemblyName);
-            List<Assembly> assemblies = new List<Assembly>();
-            foreach (AssemblyName assemblyName in assemblyNames)
+            var assemblyNames = filesNames.Select(AssemblyLoadContext.GetAssemblyName).ToList();
+
+            assemblyNames.ForEach(assemblyName =>
             {
                 var assembly = Assembly.Load(assemblyName);
-                // scenario 1
+
                 builder.RegisterAssemblyTypes(assembly)
-                             .Where(type => typeof(IQCaching).IsAssignableFrom(type) && !type.GetTypeInfo().IsAbstract)
-                             .AsImplementedInterfaces()
-                             .InstancePerLifetimeScope()
-                             .EnableInterfaceInterceptors()
-                             .InterceptedBy(typeof(QCachingInterceptor));
-            }
+                      .Where(type => type.Name.EndsWith("Repository"))
+                      .AsImplementedInterfaces()
+                      .InstancePerLifetimeScope();
+
+                builder.RegisterAssemblyTypes(assembly)
+                       .Where(type => typeof(IQCaching).IsAssignableFrom(type) && !type.GetTypeInfo().IsAbstract)
+                       .AsImplementedInterfaces()
+                       .InstancePerLifetimeScope()
+                       .EnableInterfaceInterceptors()
+                       .InterceptedBy(typeof(QCachingInterceptor));
+
+            });
 
             return new AutofacServiceProvider(builder.Build());
         }

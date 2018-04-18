@@ -2,7 +2,7 @@
 
 namespace CNBlogs.Interface
 {
-    public interface ICachingProvider
+    public interface ICachingRepository
     {
         object Get(string cacheKey);
 

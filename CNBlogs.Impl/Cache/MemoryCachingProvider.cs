@@ -4,12 +4,12 @@ using System;
 
 namespace CNBlogs.Impl
 {
-    public class MemoryCachingProvider : ICachingProvider
+    public class MemoryCachingRepository : ICachingRepository
     {
 
         private IMemoryCache _cache;
 
-        public MemoryCachingProvider(IMemoryCache cache)
+        public MemoryCachingRepository(IMemoryCache cache)
         {
             _cache = cache;
         }
